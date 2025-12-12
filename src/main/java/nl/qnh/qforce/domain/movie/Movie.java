@@ -14,14 +14,42 @@
  * limitations under the License.
  */
 
-package nl.qnh.qforce.domain;
+package nl.qnh.qforce.domain.movie;
+
+import java.time.LocalDate;
 
 /**
- * The gender.
+ * The domain class representing a Star Wars movie.
  *
  * @author QNH
  */
-public enum Gender {
+public interface Movie {
 
-    MALE, FEMALE, UNKNOWN, NOT_APPLICABLE
+    /**
+     * Returns the title.
+     *
+     * @return the title
+     */
+    String getTitle();
+
+    /**
+     * Returns the episode number.
+     *
+     * @return the episode number
+     */
+    Integer getEpisode();
+
+    /**
+     * Returns the name of the person who directed the movie.
+     *
+     * @return the name of the director
+     */
+    String getDirector();
+
+    /**
+     * The release date of the movie.
+     *
+     * @return the release date
+     */
+    LocalDate getReleaseDate();
 }

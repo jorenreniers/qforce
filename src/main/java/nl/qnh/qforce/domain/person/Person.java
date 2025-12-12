@@ -14,7 +14,10 @@
  * limitations under the License.
  */
 
-package nl.qnh.qforce.domain;
+package nl.qnh.qforce.domain.person;
+
+import nl.qnh.qforce.domain.enums.Gender;
+import nl.qnh.qforce.domain.movie.Movie;
 
 import java.util.List;
 

@@ -16,7 +16,8 @@
 
 package nl.qnh.qforce.service;
 
-import nl.qnh.qforce.domain.Person;
+import nl.qnh.qforce.domain.person.Person;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,6 +27,7 @@ import java.util.Optional;
  *
  * @author QNH
  */
+@Service
 public interface PersonService {
 
     /**
