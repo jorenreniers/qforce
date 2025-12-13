@@ -6,7 +6,7 @@ import nl.qnh.qforce.domain.movie.Movie;
 import java.util.List;
 
 public class PersonImpl implements Person {
-    private int id;
+    private Long id;
     private String name;
     private String birthYear;
     private Gender gender;

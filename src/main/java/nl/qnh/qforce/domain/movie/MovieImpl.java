@@ -3,6 +3,7 @@ package nl.qnh.qforce.domain.movie;
 import java.time.LocalDate;
 
 public class MovieImpl implements Movie{
+    private Long id;
     private String title;
     private int episodeNumber;
     private String director;
