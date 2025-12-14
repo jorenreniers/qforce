@@ -27,7 +27,7 @@ import java.util.Optional;
  *
  * @author QNH
  */
-@Service
+
 public interface PersonService {
 
     /**

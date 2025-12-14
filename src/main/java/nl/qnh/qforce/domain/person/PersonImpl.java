@@ -1,51 +1,57 @@
 package nl.qnh.qforce.domain.person;
 
+import lombok.*;
 import nl.qnh.qforce.domain.enums.Gender;
 import nl.qnh.qforce.domain.movie.Movie;
+import nl.qnh.qforce.domain.movie.MovieImpl;
 
 import java.util.List;
 
+@Builder
+@Getter
+@Setter
+@AllArgsConstructor
 public class PersonImpl implements Person {
     private Long id;
     private String name;
     private String birthYear;
     private Gender gender;
     private int height;
-    private int mass;
+    private int weight;
     private List<Movie> movies;
 
     @Override
     public long getId() {
-        return 0;
+        return id;
     }
 
     @Override
     public String getName() {
-        return "";
+        return name;
     }
 
     @Override
     public String getBirthYear() {
-        return "";
+        return birthYear;
     }
 
     @Override
     public Gender getGender() {
-        return null;
+        return gender;
     }
 
     @Override
     public Integer getHeight() {
-        return 0;
+        return height;
     }
 
     @Override
     public Integer getWeight() {
-        return 0;
+        return weight;
     }
 
     @Override
     public List<Movie> getMovies() {
-        return List.of();
+        return movies;
     }
 }
