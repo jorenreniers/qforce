@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PersonRepository extends JpaRepository<PersonImpl, Long> {
+public interface PersonRepository extends JpaRepository<PersonEntity, Long> {
     List<PersonEntity> findByName(String name);
 }

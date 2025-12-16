@@ -49,6 +49,7 @@ public class PersonControllerTest {
     void getPersonsAsAList() throws Exception {
         when(personService.search("Luke")).thenReturn(List.of(person1));
 
+        System.out.println(person1.getMovies());
         mockMvc.perform(get("/persons").param("q", "Luke"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].name").value("Luke Skywalker"));
@@ -71,6 +72,20 @@ public class PersonControllerTest {
         mockMvc.perform(get("/persons/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(1L));
+    }
+
+    @Test
+    void jacksonTest() throws Exception {
+        System.out.println(person1.toString());
+        System.out.println(person1.getMovies().toString());
+
+        when(personService.search("Luke")).thenReturn(List.of(person1));
+
+
+        mockMvc.perform(get("/persons").param("q", "Luke"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].birth_year").exists())
+                .andExpect(jsonPath("$[0].birthYear").doesNotExist());
     }
 
 

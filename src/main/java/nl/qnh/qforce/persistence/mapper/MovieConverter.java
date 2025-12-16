@@ -16,7 +16,7 @@ public abstract class MovieConverter {
                 .title(entity.getTitle())
                 .episode(entity.getEpisode())
                 .director(entity.getDirector())
-                .release_date(entity.getRelease_date())
+                .releaseDate(entity.getRelease_date())
                 .build();
     }
 
@@ -30,7 +30,7 @@ public abstract class MovieConverter {
                 .title(movie.getTitle())
                 .episode(movie.getEpisode())
                 .director(movie.getDirector())
-                .release_date(movie.getRelease_date())
+                .release_date(movie.getReleaseDate())
                 .build();
 
 
