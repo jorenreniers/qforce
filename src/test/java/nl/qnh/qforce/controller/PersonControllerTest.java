@@ -52,7 +52,8 @@ public class PersonControllerTest {
         System.out.println(person1.getMovies());
         mockMvc.perform(get("/persons").param("q", "Luke"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].name").value("Luke Skywalker"));
+                .andExpect(jsonPath("$[0].name").value("Luke Skywalker"))
+                .andExpect(jsonPath("$[0].birth_year").value("19BBY"));
     }
 
 

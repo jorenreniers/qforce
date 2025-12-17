@@ -10,9 +10,9 @@ import org.springframework.context.annotation.Configuration;
 public class JacksonConfig {
     @Bean
     public ObjectMapper objectMapper() {
-        ObjectMapper mapper = JsonMapper.builder().build();
-        objectMapper().setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
-        return mapper;
+        return JsonMapper.builder()
+                .propertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE)
+                .build();
     }
 
 }

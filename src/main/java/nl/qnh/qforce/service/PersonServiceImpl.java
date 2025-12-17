@@ -1,7 +1,7 @@
 package nl.qnh.qforce.service;
 
 import nl.qnh.qforce.domain.person.Person;
-import nl.qnh.qforce.domain.person.PersonRepository;
+import nl.qnh.qforce.persistence.repository.PersonRepository;
 import nl.qnh.qforce.persistence.entity.PersonEntity;
 import nl.qnh.qforce.persistence.mapper.PersonConverter;
 import org.springframework.stereotype.Service;

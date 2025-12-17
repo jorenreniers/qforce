@@ -1,4 +1,4 @@
-package nl.qnh.qforce.domain.person;
+package nl.qnh.qforce.persistence.repository;
 
 import nl.qnh.qforce.persistence.entity.PersonEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
