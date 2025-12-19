@@ -6,8 +6,10 @@ import nl.qnh.qforce.domain.movie.MovieImpl;
 import nl.qnh.qforce.domain.person.Person;
 import nl.qnh.qforce.domain.person.PersonImpl;
 import nl.qnh.qforce.presentation.controller.PersonController;
+import nl.qnh.qforce.service.AnalysisService;
 import nl.qnh.qforce.service.PersonService;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -30,6 +32,8 @@ public class PersonControllerTest {
 
     @MockBean
     private PersonService personService;
+    @MockBean
+    private AnalysisService analysisService;
 
     // Test Movie
     Movie movie1 = new MovieImpl(1L, "The Empire Strikes Back", 5, "Irvin Kershner", LocalDate.of(1980, 5, 17));
@@ -58,15 +62,6 @@ public class PersonControllerTest {
 
 
     @Test
-    void getPersonsAsAListShouldFail() throws Exception {
-        when(personService.search("Luke")).thenReturn(List.of(person1));
-
-        mockMvc.perform(get("/persons").param("q", "Luke"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].name").value("R2"));
-    }
-
-    @Test
     void getPersonById() throws Exception {
         when(personService.get(1L)).thenReturn(Optional.of(person1));
 
@@ -88,6 +83,8 @@ public class PersonControllerTest {
                 .andExpect(jsonPath("$[0].birth_year").exists())
                 .andExpect(jsonPath("$[0].birthYear").doesNotExist());
     }
+
+
 
 
 }

@@ -15,3 +15,14 @@ Uitbreiding van git naar reqJackson branch.
 1 uur - verdere aanpassingen en verbeteringen aan de ReqJackson branch. en de tests verder uitgebreid. verder ingelezen in Jackson Opzoeking naar mogelijke toepassing van een analytics en toepassingen hieromtrent.
 
 #17/12/2025
+5 min - Mergen van de reqJackson branch naar de development branch. aanmaak nieuwe branch voor de analytics branch.
+
+15 min - commits nalezen voor de tijdlog te kunnen schrijven
+
+40 min- na het mergen en het toevoegen van perongeluk dubbele H2 dependency verschillende error melding bij mvn clean install. Dependency vernieuwt en opzoekwerk met als conclusie dat er nog een plugin bij moest voor de lombok gebruik bij getters en setters.
+
+30 minuten voor nieuwe entity service en repository + de implementaties van deze interfaces voor de analysis
+
+1 uur - opzoekwerken en methodes om analysis functie te kunnen testen en schrijven.
+
+1 uur - testen via Postman er was nog een fout in de omzetting met de jackson config dit opgezocht en eruit gewerkt welke aanpassing er geweest moest gebeuren. Update in de application.properties om zonder wachtwoord in de h2 console te geraken. voor tijd te besparen

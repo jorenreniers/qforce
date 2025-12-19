@@ -21,7 +21,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public List<Person> search(String query) {
-        List<PersonEntity> personEntities = personRepository.findByName(query);
+        List<PersonEntity> personEntities = personRepository.findByNameContaining(query);
         return personEntities.stream()
                 .map(PersonConverter::toPerson)
                 .collect(Collectors.toList());
@@ -29,6 +29,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Optional<Person> get(long id) {
-        return Optional.empty();
+        return personRepository.findById(id)
+                .map(PersonConverter::toPerson);
     }
 }

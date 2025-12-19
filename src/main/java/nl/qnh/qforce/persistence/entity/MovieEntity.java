@@ -7,12 +7,12 @@ import lombok.*;
 import java.time.LocalDate;
 
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
+@Entity
+@Table(name = "movies")
 @Getter
 @Setter
-@Entity(name = "movie")
-@Table(name = "movies")
+@NoArgsConstructor
+@AllArgsConstructor
 public class MovieEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,9 +28,11 @@ public class MovieEntity {
     private String director;
 
     @Column(name = "release_date")
-    private LocalDate release_date;
+    private LocalDate releaseDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id")
     private PersonEntity person;
+
+
 }

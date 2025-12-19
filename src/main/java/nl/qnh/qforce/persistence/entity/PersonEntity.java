@@ -8,10 +8,10 @@ import nl.qnh.qforce.domain.enums.Gender;
 import java.util.List;
 
 @Builder
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Entity(name = "person")
 @Table(name = "persons")
 public class PersonEntity {
@@ -35,6 +35,9 @@ public class PersonEntity {
     @Column(name = "birth_year")
     private String birthYear;
 
-    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<MovieEntity> movies;
+
+
+
 }

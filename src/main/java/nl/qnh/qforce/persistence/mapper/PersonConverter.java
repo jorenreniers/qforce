@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public abstract class PersonConverter {
 
-    public static Person toPerson(PersonEntity entity) {
+    public static PersonImpl toPerson(PersonEntity entity) {
         if (entity == null){
             throw new IllegalArgumentException("PersonEntity cannot be null");
         }

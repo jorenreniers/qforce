@@ -3,37 +3,30 @@ package nl.qnh.qforce.persistence.mapper;
 import nl.qnh.qforce.domain.movie.Movie;
 import nl.qnh.qforce.domain.movie.MovieImpl;
 import nl.qnh.qforce.persistence.entity.MovieEntity;
-
 public abstract class MovieConverter {
-
 
     public static Movie toMovie(MovieEntity entity) {
         if (entity == null) {
-            throw new IllegalArgumentException("MovieEntity cannot be null");
+            return null;
         }
 
         return MovieImpl.builder()
+                .id(entity.getId())
                 .title(entity.getTitle())
                 .episode(entity.getEpisode())
                 .director(entity.getDirector())
-                .releaseDate(entity.getRelease_date())
+                .releaseDate(entity.getReleaseDate())
                 .build();
     }
 
-
-    public static MovieEntity toMovieEntity(MovieImpl movie) {
-        if (movie == null) {
-            throw new IllegalArgumentException("MovieImpl cannot be null");
-        }
-
+    public static MovieEntity toMovieEntity(Movie movie) {
         return MovieEntity.builder()
                 .title(movie.getTitle())
                 .episode(movie.getEpisode())
                 .director(movie.getDirector())
-                .release_date(movie.getReleaseDate())
+                .releaseDate(movie.getReleaseDate())
                 .build();
-
-
     }
 }
+
 
