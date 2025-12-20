@@ -26,3 +26,19 @@ Uitbreiding van git naar reqJackson branch.
 1 uur - opzoekwerken en methodes om analysis functie te kunnen testen en schrijven.
 
 1 uur - testen via Postman er was nog een fout in de omzetting met de jackson config dit opgezocht en eruit gewerkt welke aanpassing er geweest moest gebeuren. Update in de application.properties om zonder wachtwoord in de h2 console te geraken. voor tijd te besparen
+
+#19/12/2025
+Late shift gehad 20 minuten ingelezen op SWAPI
+
+#20/12/2025
+
+nieuwe branch opgezet en 5 min opzet voor API config op te zetten als API WebClient
+
+15min- opzetten van test van en PersonServiceImpl 
+
+30min - fouten wegwerken in serviceTest layer
+
+20 Min- proberen voor via aparte DTO data te ontvangen. SwapiPerson en een converter instellen
+
+30 min- aanpassingen en fouten wegwerken in test en ServiceImpl
+

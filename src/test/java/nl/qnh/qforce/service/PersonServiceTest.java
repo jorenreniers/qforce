@@ -43,10 +43,8 @@ public class PersonServiceTest {
 
         SwapiPersonDto[] mockPersons = {mockPersonDto};
 
-        // Mock RestTemplate response
         when(restTemplate.getForObject(anyString(), eq(SwapiPersonDto[].class))).thenReturn(mockPersons);
 
-        // Mock SwapiMovieDto response
         SwapiMovieDto mockMovieDto = new SwapiMovieDto();
         mockMovieDto.setTitle("A New Hope");
         mockMovieDto.setEpisode(4);
@@ -55,10 +53,8 @@ public class PersonServiceTest {
 
         when(restTemplate.getForObject(anyString(), eq(SwapiMovieDto.class))).thenReturn(mockMovieDto);
 
-        // Test
         List<Person> result = personService.search("Luke");
 
-        // Verify
         assertEquals(1, result.size());
         assertEquals("Luke Skywalker", result.get(0).getName());
         assertEquals(1, result.get(0).getMovies().size());
