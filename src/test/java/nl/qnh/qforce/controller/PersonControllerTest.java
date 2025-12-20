@@ -9,7 +9,6 @@ import nl.qnh.qforce.presentation.controller.PersonController;
 import nl.qnh.qforce.service.AnalysisService;
 import nl.qnh.qforce.service.PersonService;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;

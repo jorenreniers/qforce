@@ -2,8 +2,6 @@ package nl.qnh.qforce.presentation.controller;
 
 import lombok.RequiredArgsConstructor;
 import nl.qnh.qforce.domain.person.Person;
-import nl.qnh.qforce.domain.person.PersonImpl;
-import nl.qnh.qforce.persistence.mapper.PersonConverter;
 import nl.qnh.qforce.service.AnalysisService;
 import nl.qnh.qforce.service.PersonService;
 import org.springframework.http.ResponseEntity;

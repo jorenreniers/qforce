@@ -1,4 +1,4 @@
-package nl.qnh.qforce.persistence.mapper;
+package nl.qnh.qforce.persistence.converter;
 
 import nl.qnh.qforce.domain.movie.Movie;
 import nl.qnh.qforce.domain.movie.MovieImpl;

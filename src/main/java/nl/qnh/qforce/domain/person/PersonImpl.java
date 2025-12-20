@@ -10,11 +10,14 @@ import nl.qnh.qforce.domain.movie.Movie;
 import java.util.List;
 
 @Builder
+@NoArgsConstructor
+@Getter
+@Setter
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PersonImpl implements Person {
     @JsonProperty("id")
-    private Long id;
+    private long id;
 
     @JsonProperty("name")
     private String name;
@@ -26,48 +29,13 @@ public class PersonImpl implements Person {
     private Gender gender;
 
     @JsonProperty("height")
-    private int height;
+    private Integer height;
 
     @JsonProperty("weight")
-    private int weight;
+    private Integer weight;
 
     @JsonProperty("movies")
     private List<Movie> movies;
-
-    @Override
-    public long getId() {
-        return id;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public String getBirthYear() {
-        return birthYear;
-    }
-
-    @Override
-    public Gender getGender() {
-        return gender;
-    }
-
-    @Override
-    public Integer getHeight() {
-        return height;
-    }
-
-    @Override
-    public Integer getWeight() {
-        return weight;
-    }
-
-    @Override
-    public List<Movie> getMovies() {
-        return movies;
-    }
 
     @Override
     public String toString() {
