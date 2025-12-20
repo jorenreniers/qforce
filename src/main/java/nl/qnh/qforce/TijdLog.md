@@ -42,3 +42,5 @@ nieuwe branch opgezet en 5 min opzet voor API config op te zetten als API WebCli
 
 30 min- aanpassingen en fouten wegwerken in test en ServiceImpl
 
+Ongeveer 1u45: Trial en error voor Overzet van DTO van SWAPI om te zetten om uit te komen dat films moest geschreven worden en niet movies.
+

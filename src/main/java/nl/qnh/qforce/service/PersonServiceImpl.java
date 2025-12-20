@@ -2,6 +2,7 @@ package nl.qnh.qforce.service;
 
 
 import nl.qnh.qforce.domain.person.Person;
+import nl.qnh.qforce.external.swapi.SwapiClient;
 import nl.qnh.qforce.persistence.converter.PersonConverter;
 import nl.qnh.qforce.persistence.repository.PersonRepository;
 import nl.qnh.qforce.presentation.dto.SwapiPersonDto;
@@ -17,37 +18,32 @@ import java.util.stream.Collectors;
 @Service
 public class PersonServiceImpl implements PersonService {
 
-    private final RestTemplate restTemplate;
-    private final String SWAPI_BASE_URL = "https://swapi.info/api/";
+    private final SwapiClient swapiClient;
 
-    @Autowired
-    public PersonServiceImpl(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
+    private PersonServiceImpl(SwapiClient swapiClient) {
+        this.swapiClient = swapiClient;
     }
+
     @Override
     public List<Person> search(String query) {
-        String url = SWAPI_BASE_URL + "people/?search=" + query;
-        SwapiPersonDto[] swapiResult = restTemplate.getForObject(url, SwapiPersonDto[].class);
-
-        if (swapiResult != null) {
-            return Arrays.stream(swapiResult)
-                    .filter(person -> person.getName().toLowerCase().contains(query.toLowerCase()))
-                    .map(swapiPerson -> PersonConverter.convertToPerson(swapiPerson, restTemplate))
-                    .collect(Collectors.toList());
-        } else {
-            return List.of();
-        }
+        return swapiClient.searchPersons(query).stream()
+                .filter(person -> person.getName().toLowerCase().contains(query.toLowerCase()))
+                .map(dto -> PersonConverter.convertToPerson(dto, swapiClient))
+                .collect(Collectors.toList());
     }
 
     @Override
     public Optional<Person> get(long id) {
-        String url = SWAPI_BASE_URL + "people/" + id + "/";
-        SwapiPersonDto swapiPerson = restTemplate.getForObject(url, SwapiPersonDto.class);
-        if (swapiPerson != null) {
-            return Optional.of(PersonConverter.convertToPerson(swapiPerson, restTemplate));
-        } else {
+
+        SwapiPersonDto dto = swapiClient.getPersonById(id);
+
+        if (dto == null) {
             return Optional.empty();
         }
+
+        return Optional.of(
+                PersonConverter.convertToPerson(dto, swapiClient)
+        );
     }
 
 

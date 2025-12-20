@@ -1,6 +1,7 @@
 package nl.qnh.qforce.presentation.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,6 +14,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
+
 public class SwapiPersonDto {
     private String name;
     @JsonProperty("birth_year")
@@ -20,7 +23,7 @@ public class SwapiPersonDto {
     private String gender;
     private String height;
     private String mass;
-    @JsonProperty("movies")
-    private List<String> movies;
+    @JsonProperty("films")
+    private List<String> films;
     private String url;
 }

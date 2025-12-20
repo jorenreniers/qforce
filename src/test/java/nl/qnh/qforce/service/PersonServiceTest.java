@@ -31,7 +31,6 @@ public class PersonServiceTest {
 
     @Test
     public void testSearchPersons() {
-        // Mock data
         SwapiPersonDto mockPersonDto = new SwapiPersonDto();
         mockPersonDto.setName("Luke Skywalker");
         mockPersonDto.setBirthYear("19BBY");
@@ -39,7 +38,7 @@ public class PersonServiceTest {
         mockPersonDto.setHeight("172");
         mockPersonDto.setMass("77");
         mockPersonDto.setUrl("https://swapi.dev/api/people/1/");
-        mockPersonDto.setMovies(Arrays.asList("https://swapi.dev/api/films/1/"));
+        mockPersonDto.setFilms(Arrays.asList("https://swapi.dev/api/films/1/"));
 
         SwapiPersonDto[] mockPersons = {mockPersonDto};
 

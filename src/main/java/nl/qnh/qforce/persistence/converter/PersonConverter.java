@@ -5,16 +5,15 @@ import nl.qnh.qforce.domain.movie.Movie;
 import nl.qnh.qforce.domain.movie.MovieImpl;
 import nl.qnh.qforce.domain.person.Person;
 import nl.qnh.qforce.domain.person.PersonImpl;
+import nl.qnh.qforce.external.swapi.SwapiClient;
 import nl.qnh.qforce.persistence.entity.PersonEntity;
 import nl.qnh.qforce.presentation.dto.SwapiMovieDto;
 import nl.qnh.qforce.presentation.dto.SwapiPersonDto;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public abstract class PersonConverter {
 
@@ -58,10 +57,34 @@ public abstract class PersonConverter {
         person.setGender(mapGender(swapiPerson.getGender()));
         person.setHeight(mapHeight(swapiPerson.getHeight()));
         person.setWeight(mapWeight(swapiPerson.getMass()));
-        List<String> movieUrls = Optional.ofNullable(swapiPerson.getMovies()).orElse(Collections.emptyList());
+        List<String> movieUrls = Optional.ofNullable(swapiPerson.getFilms()).orElse(Collections.emptyList());
         person.setMovies(getMovies(movieUrls, restTemplate));
         return person;
     }
+
+    public static Person convertToPerson(SwapiPersonDto dto, SwapiClient swapiClient) {
+        System.out.println("Films URLs in converToPerson: " + dto.getFilms());
+        List<Movie> movies = Optional.ofNullable(dto.getFilms())
+                .orElse(Collections.emptyList())
+                .stream()
+                .map(filmUrl -> {
+                    SwapiMovieDto movieDto = swapiClient.getMovieByUrl(filmUrl);
+                    return MovieConverter.toMovie(movieDto);
+                })
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+
+        return PersonImpl.builder()
+                .id(extractIdFromUrl(dto.getUrl()))
+                .name(dto.getName())
+                .birthYear(dto.getBirthYear())
+                .gender(mapGender(dto.getGender()))
+                .height(mapHeight(dto.getHeight()))
+                .weight(mapWeight(dto.getMass()))
+                .movies(movies)
+                .build();
+    }
+
 
     private static long extractIdFromUrl(String url) {
         String[] parts = url.split("/");
