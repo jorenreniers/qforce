@@ -1,8 +1,7 @@
-package nl.qnh.qforce.config;
+package nl.qnh.qforce.domain.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 import javax.net.ssl.*;
@@ -10,8 +9,20 @@ import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.X509Certificate;
 
+
+/**
+ * Configuration implements a {@link RestTemplate} bean where a SSL-Certificate (Secure sockets Layer) and hostname-validation is turned off.
+ * So it can be used in development.
+ **/
 @Configuration
 public class AppConfig {
+
+    /**
+     * Creates a {@link RestTemplate} that allows all SSL-certificates
+     *
+     * #NoSuchAlgorithmException in case if SSl is not available
+     * and #KeyManagementEXception in case it fails
+     * **/
 
     @Bean
     public RestTemplate restTemplate() throws NoSuchAlgorithmException, KeyManagementException {

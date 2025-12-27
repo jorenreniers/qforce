@@ -1,22 +1,24 @@
 package nl.qnh.qforce.service;
 
-
 import nl.qnh.qforce.domain.person.Person;
 import nl.qnh.qforce.external.swapi.SwapiClient;
 import nl.qnh.qforce.persistence.converter.PersonConverter;
-import nl.qnh.qforce.persistence.repository.PersonRepository;
 import nl.qnh.qforce.presentation.dto.SwapiPersonDto;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * The implementation of the {@link PersonService} interface.
+ * <p>
+ * {@link SwapiClient} is used for the communication with the API
+ * </p>
+ */
 @Service
 public class PersonServiceImpl implements PersonService {
+
 
     private final SwapiClient swapiClient;
 
@@ -24,6 +26,12 @@ public class PersonServiceImpl implements PersonService {
         this.swapiClient = swapiClient;
     }
 
+    /**
+     * The search function, using the provided query. Results are filtered where getName() contains the query
+     *
+     * @param query the query string
+     * @return a list of matching results or an empty list.
+     */
     @Override
     public List<Person> search(String query) {
         return swapiClient.searchPersons(query).stream()
@@ -32,6 +40,12 @@ public class PersonServiceImpl implements PersonService {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Searches a person by its unique identifier. If no person is found for the given id, an empty {@link Optional} is returned.
+     *
+     * @param id the unique identifier
+     * @return an {@link Optional} containing the {@link Person} if found or an empty Optional
+     */
     @Override
     public Optional<Person> get(long id) {
 
@@ -46,19 +60,4 @@ public class PersonServiceImpl implements PersonService {
         );
     }
 
-
-//
-//    @Override
-//    public List<Person> search(String query) {
-//        List<PersonEntity> personEntities = personRepository.findByNameContaining(query);
-//        return personEntities.stream()
-//                .map(PersonConverter::toPerson)
-//                .collect(Collectors.toList());
-//    }
-//
-//    @Override
-//    public Optional<Person> get(long id) {
-//        return personRepository.findById(id)
-//                .map(PersonConverter::toPerson);
-//    }
 }

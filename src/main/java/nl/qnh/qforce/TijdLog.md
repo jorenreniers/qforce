@@ -44,3 +44,25 @@ nieuwe branch opgezet en 5 min opzet voor API config op te zetten als API WebCli
 
 Ongeveer 1u45: Trial en error voor Overzet van DTO van SWAPI om te zetten om uit te komen dat films moest geschreven worden en niet movies.
 
+#21/12/2025
+
+Dag aan mijn studie gewerkt
+
+#22/12/2025
+
+Dag shift gewerkt
+
+Nieuwe branch opgezet en half uur java docs ingevuld 
+
+#23/12/2025
+
+Na dagshift - 1uur java docs geschreven voor config movie, person end SWapi client.
+
+#25/12/2025 
+1uur - Overbodige code verwijderd en testen of het nog goed werkt zoals verwijderen van de repos en de overbodige entiteiten. En java doc verderschrijven.
+
+#27/12/2025
+2 uur - Verder Overtollige code vewijderd en getest of alles nog correct werkt. JavaDocs geschreven voor de DTO, Repository en de services met de implementaties. Testen herstructuren
+
+
+
